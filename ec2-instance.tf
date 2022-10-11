@@ -21,17 +21,17 @@ provider "aws" {
 }
 
 # Resource Block
-resource "aws_instance" "ec2demo" {
-  ami           = "ami-01216e7612243e0ef" # Amazon Linux in us-east-1, update as per your region
-  instance_type = "t2.micro"
-}
+# resource "aws_instance" "ec2demo" {
+#   ami           = "ami-01216e7612243e0ef" # Amazon Linux in us-east-1, update as per your region
+#   instance_type = "t2.micro"
+# }
 
 
-resource "aws_s3_bucket" "b" {
-  bucket = "my-tf-test-bucket-xy5142874"
+# resource "aws_s3_bucket" "b" {
+#   bucket = "my-tf-test-bucket-xy5142874"
 
-  tags = {
-    Name        = "My bucket"
-    Environment = "Dev"
-  }
-}
+#   tags = {
+#     Name        = "My bucket"
+#     Environment = "Dev"
+#   }
+# }
