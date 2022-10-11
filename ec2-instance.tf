@@ -5,6 +5,11 @@ terraform {
       source  = "hashicorp/aws"
       version = "~> 3.21" # Optional but recommended in production
     }
+    backend "s3" {
+    bucket = "i-named-this-bucket-157673692367-0"
+    key    = "state-file/terraform.state"
+    region = "ap-south-1"
+  }
   }
 }
 
