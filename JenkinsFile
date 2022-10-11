@@ -11,26 +11,26 @@ pipeline {
         
         stage ("terraform init") {
             steps {
-                sh ('sudo terraform init') 
+                sh ('terraform init') 
             }
         }
         stage ("terraform validate") {
             steps {
                 echo "Terraform action is --> validate"
-                sh ('sudo terraform validate') 
+                sh ('terraform validate') 
            }
         }
         stage ("terraform plan") {
             steps {
                 echo "Terraform action is --> plan"
-                sh ('sudo terraform plan') 
+                sh ('terraform plan') 
            }
         }
 
         stage ("terraform apply") {
             steps {
                 echo "Terraform action is --> apply"
-                sh ('sudo terraform apply --auto-approve') 
+                sh ('terraform apply --auto-approve') 
            }
         }
     }
