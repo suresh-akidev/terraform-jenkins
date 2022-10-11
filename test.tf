@@ -67,7 +67,7 @@ resource "aws_cloudwatch_metric_alarm" "terra_CPU_alarm" {
     namespace = "AWS/EC2"
     statistic = "Average"
     dimensions = {
-        InstanceId = "${aws_instance.terra_ec2.instance_id}" 
+        InstanceId = aws_instance.terra_ec2.id
     }
     period = 300
     evaluation_periods = 1
@@ -78,7 +78,7 @@ resource "aws_cloudwatch_metric_alarm" "terra_CPU_alarm" {
 }
 
 resource "aws_instance" "terra_ec2" {
-    ami = "ami-068257025f72f470d"
+    ami = "ami-062df10d14676e201"
     instance_type = "t2.medium"
     key_name = "ec2_key_pair"
     availability_zone = "ap-south-1a"
@@ -87,11 +87,20 @@ resource "aws_instance" "terra_ec2" {
     vpc_security_group_ids = [
         "sg-085a51b739df34661"
     ]
+    associate_public_ip_address = true
     root_block_device {
         volume_size = 20
         volume_type = "gp2"
         delete_on_termination = true
     }
+
+    user_data = <<-EOF
+        #!/bin/bash
+        sudo apt update
+        sudo apt install apache2 -y
+        sudo systemctl enable apache2
+        sudo systemctl start apache2
+        EOF
  
     tags = {
     Name = "terra-ec2",
