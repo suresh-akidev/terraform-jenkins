@@ -7,11 +7,11 @@ terraform {
     }
     
   }
-  backend "s3" {
-    bucket = "i-named-this-bucket-157673692367-0"
-    key    = "state-file/terraform.state"
-    region = "ap-south-1"
-  }
+  # backend "s3" {
+  #   bucket = "i-named-this-bucket-157673692367-0"
+  #   key    = "state-file/terraform.state"
+  #   region = "ap-south-1"
+  # }
 }
 
 # Provider Block
