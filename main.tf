@@ -63,7 +63,7 @@ egress {
   }
 
  tags = {
-   "Environment" = "DEV"
+   "Environment" = "UAT"
  }
 }
 
